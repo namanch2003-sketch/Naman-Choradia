@@ -1,0 +1,127 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #ffffff;
+  --foreground: #001B4D;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: var(--font-source-sans), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Prose styles for markdown post content */
+.prose-nrc {
+  color: #1a2332;
+  line-height: 1.8;
+  font-size: 1.0625rem;
+}
+
+.prose-nrc h1,
+.prose-nrc h2,
+.prose-nrc h3,
+.prose-nrc h4 {
+  font-family: var(--font-playfair), Georgia, serif;
+  color: #001B4D;
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+.prose-nrc h1 { font-size: 2rem; }
+.prose-nrc h2 { font-size: 1.5rem; border-bottom: 1px solid #E5EAF2; padding-bottom: 0.5rem; }
+.prose-nrc h3 { font-size: 1.2rem; }
+
+.prose-nrc p {
+  margin-bottom: 1.25rem;
+  color: #2d3748;
+}
+
+.prose-nrc strong {
+  color: #001B4D;
+  font-weight: 600;
+}
+
+.prose-nrc ul,
+.prose-nrc ol {
+  margin-bottom: 1.25rem;
+  padding-left: 1.5rem;
+}
+
+.prose-nrc li {
+  margin-bottom: 0.4rem;
+  color: #2d3748;
+}
+
+.prose-nrc blockquote {
+  border-left: 3px solid #1E63FF;
+  padding-left: 1.25rem;
+  margin: 1.5rem 0;
+  color: #4a5568;
+  font-style: italic;
+}
+
+.prose-nrc code {
+  background: #f0f4ff;
+  color: #1E63FF;
+  padding: 0.15rem 0.4rem;
+  border-radius: 4px;
+  font-size: 0.9em;
+}
+
+.prose-nrc pre {
+  background: #f8faff;
+  border: 1px solid #E5EAF2;
+  border-radius: 8px;
+  padding: 1.25rem;
+  overflow-x: auto;
+  margin-bottom: 1.25rem;
+}
+
+.prose-nrc a {
+  color: #1E63FF;
+  text-decoration: underline;
+  text-decoration-color: #c5d5ff;
+}
+
+.prose-nrc a:hover {
+  text-decoration-color: #1E63FF;
+}
+
+.prose-nrc hr {
+  border: none;
+  border-top: 1px solid #E5EAF2;
+  margin: 2rem 0;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #f8faff;
+}
+::-webkit-scrollbar-thumb {
+  background: #c5d5ff;
+  border-radius: 3px;
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
