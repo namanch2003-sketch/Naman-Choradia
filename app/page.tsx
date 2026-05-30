@@ -1,19 +1,25 @@
-import Hero from "@/components/Hero";
-import FocusAreas from "@/components/FocusAreas";
-import LatestInsights from "@/components/LatestInsights";
-import ContentSections from "@/components/ContentSections";
-import { getAllPosts } from "@/lib/posts";
+import dynamic from "next/dynamic";
+import type { Metadata } from "next";
 
-// This is a Server Component — reads posts at build time, zero client bundle cost.
+export const metadata: Metadata = {
+  title: "Naman Choradia — Discipline. Research. Compounding.",
+  description:
+    "CA (1st attempt) · CFA Level I · Associate at KPMG India · Independent equity analyst. Documenting the pursuit of mastery through discipline and compounding.",
+  openGraph: {
+    title: "Naman Choradia — Discipline. Research. Compounding.",
+    description:
+      "CA (1st attempt) · CFA Level I · KPMG India. Documenting markets, finance, and continuous learning.",
+    url: "https://namanrch.in",
+    siteName: "Naman Choradia",
+    type: "website",
+  },
+};
+
+const HomeContent = dynamic(
+  () => import("@/components/pages/HomeContent"),
+  { ssr: false }
+);
+
 export default function HomePage() {
-  const posts = getAllPosts();
-
-  return (
-    <>
-      <Hero />
-      <FocusAreas />
-      <LatestInsights posts={posts} />
-      <ContentSections />
-    </>
-  );
+  return <HomeContent />;
 }

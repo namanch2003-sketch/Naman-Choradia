@@ -1,7 +1,12 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // Allow remark-html to generate HTML from markdown at build time
-  experimental: {},
+  staticPageGenerationTimeout: 300,
+  images: {
+    unoptimized: true,
+  },
+  experimental: {
+    optimizePackageImports: ['framer-motion', 'lucide-react'],
+  },
 };
 
 export default nextConfig;
