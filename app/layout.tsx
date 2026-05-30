@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
 import { Playfair_Display, Source_Sans_3 } from "next/font/google";
 import "./globals.css";
-import Sidebar from "@/components/Sidebar";
-import TopNav from "@/components/TopNav";
+import LayoutClient from "@/components/LayoutClient";
 
 const playfair = Playfair_Display({
   subsets: ["latin"],
@@ -34,22 +33,11 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+}: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en" className={`${playfair.variable} ${sourceSans.variable}`}>
-      <body className="bg-white text-navy-DEFAULT antialiased font-sans">
-        <div className="flex min-h-screen">
-          {/* Fixed sidebar — desktop only */}
-          <Sidebar />
-
-          {/* Main content area */}
-          <div className="flex-1 lg:ml-sidebar flex flex-col min-h-screen">
-            <TopNav />
-            <main className="flex-1">{children}</main>
-          </div>
-        </div>
+      <body className="antialiased">
+        <LayoutClient>{children}</LayoutClient>
       </body>
     </html>
   );

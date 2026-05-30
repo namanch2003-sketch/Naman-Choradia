@@ -23,8 +23,12 @@ const config: Config = {
         muted: "#6B7280",
       },
       fontFamily: {
-        playfair: ["var(--font-playfair)", "Georgia", "serif"],
+        // Playfair Display — used via font-serif class
+        serif: ["var(--font-playfair)", "Georgia", "serif"],
+        // Source Sans 3 — used via font-sans class
         sans: ["var(--font-source-sans)", "system-ui", "sans-serif"],
+        // Legacy alias kept for any existing components
+        playfair: ["var(--font-playfair)", "Georgia", "serif"],
       },
       spacing: {
         sidebar: "280px",

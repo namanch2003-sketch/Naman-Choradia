@@ -1,50 +1,80 @@
 import Link from "next/link";
-import ChartBackground from "./ChartBackground";
+import { ArrowRight, User } from "lucide-react";
+import MarketCard from "./MarketCard";
 
 export default function Hero() {
   return (
-    <section className="relative overflow-hidden min-h-[calc(100vh-4rem)] flex items-center bg-white">
-      <ChartBackground />
+    <section
+      id="home"
+      className="relative overflow-hidden px-5 py-12 lg:px-10 lg:py-16"
+    >
+      {/* ── Decorative bar-chart background ── */}
+      <div className="pointer-events-none absolute right-0 top-10 h-96 w-[620px] opacity-20">
+        <svg viewBox="0 0 600 360" className="h-full w-full" aria-hidden="true">
+          {Array.from({ length: 22 }).map((_, i) => {
+            const x = i * 28;
+            const h = 40 + ((i * 17) % 120);
+            const y = 250 - h - i * 3;
+            return (
+              <rect
+                key={i}
+                x={x}
+                y={y}
+                width="12"
+                height={h}
+                rx="2"
+                fill="#155EEF"
+                opacity={0.35}
+              />
+            );
+          })}
+          <path
+            d="M0 280 C80 250 90 230 150 220 C230 200 230 150 310 145 C390 140 380 95 470 80 C530 70 540 40 600 25"
+            fill="none"
+            stroke="#155EEF"
+            strokeWidth="5"
+          />
+        </svg>
+      </div>
 
-      <div className="relative z-10 w-full px-6 lg:px-16 xl:px-20 py-20 lg:py-28">
-        <div className="max-w-2xl">
-          {/* Label */}
-          <p
-            className="text-xs font-sans font-semibold tracking-[0.3em] uppercase text-accent-DEFAULT mb-6"
-            style={{ color: "#8299c4" }}
-          >
-            Markets. Knowledge. Discipline.
+      {/* ── Content grid ── */}
+      <div className="grid items-center gap-10 xl:grid-cols-[1.05fr_0.95fr]">
+        {/* Left — copy */}
+        <div className="relative z-10 max-w-3xl">
+          <p className="text-xl font-semibold text-slate-950">
+            Hi, I&apos;m Naman R C 👋
           </p>
 
-          {/* Headline */}
-          <h1
-            className="font-playfair font-bold text-navy-DEFAULT mb-6 text-balance leading-[1.1]"
-            style={{ fontSize: "clamp(2.5rem, 5vw, 4.5rem)" }}
-          >
-            Clarity in Analysis.
+          <h2 className="mt-5 font-serif text-5xl leading-tight tracking-tight text-slate-950 md:text-7xl">
+            <span className="text-blue-700">Clarity</span> in Analysis.
             <br />
-            <span className="text-accent-DEFAULT">Confidence</span> in
-            Decisions.
-          </h1>
+            <span className="text-teal-700">Confidence</span> in Decisions.
+          </h2>
 
-          {/* Subtext */}
-          <p className="font-sans text-muted text-lg leading-relaxed mb-10 max-w-lg">
-            Insights on markets, detailed research, and a disciplined approach
-            to trading and investing — by Naman R C.
+          <p className="mt-6 max-w-xl text-lg leading-8 text-slate-600">
+            I share insights on stock markets, in-depth research, CA Final
+            preparation, and track my trades with discipline and transparency.
           </p>
 
-          {/* CTA */}
-          <Link
-            href="/technical-analysis"
-            className="inline-flex items-center gap-2 px-7 py-3.5 bg-navy-DEFAULT text-white font-sans font-medium rounded-lg
-              transition-all duration-200 hover:shadow-lg hover:-translate-y-0.5 hover:bg-navy-light group text-[15px]"
-          >
-            Explore Insights
-            <span className="group-hover:translate-x-1 transition-transform duration-200">
-              →
-            </span>
-          </Link>
+          <div className="mt-9 flex flex-wrap gap-4">
+            <Link
+              href="/technical-analysis"
+              className="inline-flex items-center gap-3 rounded-lg bg-blue-700 px-7 py-3.5 text-sm font-semibold text-white shadow-lg shadow-blue-700/20 transition hover:-translate-y-0.5 hover:bg-blue-800"
+            >
+              Explore Insights <ArrowRight size={18} />
+            </Link>
+
+            <Link
+              href="/about"
+              className="inline-flex items-center gap-3 rounded-lg border border-slate-200 bg-white px-7 py-3.5 text-sm font-semibold text-slate-800 transition hover:border-blue-200 hover:bg-blue-50"
+            >
+              About Me <User size={17} />
+            </Link>
+          </div>
         </div>
+
+        {/* Right — market card */}
+        <MarketCard />
       </div>
     </section>
   );
